@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-12">
+        <div id="postlist">
+            {{#each products}}
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="text-center">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <h3 class="pull-left">{{this.title}}</h3>
+                            </div>
+                            <div class="col-sm-9">
+                                <h4 class="pull-right">
+                                    <small><em>Preço: R$ {{this.price}}</em></small>
+                                </h4>
+
+                            </div>
+                            <br>
+                            <a href="/product/{{this.id}}" type="button" class="btn btn-light pull-right">mais detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            {{/each}}
+        </div>
+    </div>
+</div>
