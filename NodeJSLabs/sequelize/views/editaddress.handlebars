@@ -1,0 +1,29 @@
+
+<div class="container">
+    <div class="row">
+        <form role="form" class="col-md-9 go-right" action="/address/update" method="post">
+            <input id="id" name="id" type="text" value="{{address.id}}" style="display:none">
+            <input id="UserId" name="UserId" type="text" value="{{address.UserId}}" style="display:none">
+            <h2>Edit Address</h2>
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input id="street" name="street" type="text" class="form-control" value="{{address.street}}" required>
+            </div>
+            <div class="form-group">
+                <label for="number">Number</label>
+                <input id="number" name="number" type="text" class="form-control" value="{{address.number}}"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input id="city" name="city" type="text" class="form-control" value="{{address.city}}"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Edit">
+                <a href="/users/get/{{address.UserId}}" class="btn btn-default">Back to User</a>
+            </div>
+        </form>
+    </div>
+ </div>

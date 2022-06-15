@@ -1,0 +1,86 @@
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<div class="container">
+    <div class="row">
+        <form role="form" class="col-md-9 go-right" action="/users/update" method="post">
+            <input id="id" name="id" type="text" value="{{user.id}}" style="display:none">
+            <h2>Edit User</h2>
+            <div class="form-group">
+                <label for="title">Name</label>
+                <input id="name" name="name" type="text" class="form-control" value="{{user.name}}" required>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation</label>
+                <input id="occupation" name="occupation" type="text" class="form-control" value="{{user.occupation}}"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="newsletter">Newsletter</label>
+                {{#if user.newsletter}}
+                <input id="newsletter" name="newsletter" type="checkbox" class="form-control" checked>
+                {{else}}
+                <input id="newsletter" name="newsletter" type="checkbox" class="form-control">
+                {{/if}}
+
+
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Edit">
+                <a href="/users/get" class="btn btn-default">List Users</a>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="container">
+            <h4>Users - List Address</h4>
+
+            <table>
+                <tr>
+                    <th>Action</th>
+                    <th>Street</th>
+                    <th>Number</th>
+                    <th>City</th>
+                </tr>
+                {{#each user.Addresses}}
+                <tr>
+                    <td style="width:20%;">
+                        <form action="/address/delete" method="post">
+                            <input id="UserId" name="UserId" type="text" value="{{this.UserId}}" style="display:none">
+                            <input id="id" name="id" type="text" value="{{this.id}}" style="display:none">
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
+                        <form action="/address/edit" method="post">
+                            <input id="UserId" name="UserId" type="text" value="{{this.UserId}}" style="display:none">
+                            <input id="id" name="id" type="text" value="{{this.id}}" style="display:none">
+                            <input type="submit" class="btn btn-warning" value="Edit">
+                        </form>                        
+                    </td>
+                    <td>{{this.street}}</td>
+                    <td>{{this.number}}</td>
+                    <td>{{this.city}}</td>
+                </tr>
+                {{/each}}
+            </table>
+            <a href="/" class="btn btn-default">Back to Home</a>
+            <a href="/address/add/{{user.id}}" class="btn btn-primary">Add Address</a>
+        </div>
+    </div>
+</div>

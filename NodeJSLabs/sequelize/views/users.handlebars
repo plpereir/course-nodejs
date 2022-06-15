@@ -1,0 +1,47 @@
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<div class="container">
+<h2>List Users</h2>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Occupation</th>
+    <th>newsletter</th>
+  </tr>
+      {{#each users}}
+  <tr>
+    <td style="width:20%;">
+     <form  action="/users/delete" method="post">
+        <a href="/users/get/{{this.id}}"  class="btn btn-primary">{{this.id}}</a> - 
+        <a href="/users/edit/{{this.id}}"  class="btn btn-warning" >Edit</a> - 
+        <input id="id" name="id" type="text" value="{{this.id}}" style="display:none">
+        <input type="submit" class="btn btn-danger" value="Delete">
+      </form>
+    </td>
+    <td>{{this.name}}</td>
+    <td>{{this.occupation}}</td>
+    <td>{{this.newsletter}}</td>
+  </tr>
+      {{/each}}
+</table>
+<a href="/" class="btn btn-default">Back to Home</a>
+</div>
